@@ -12,8 +12,6 @@ Popular test runners such as Vitest and `node:test` provide built-in assertion r
 
 It retries callbacks that throw or reject until they succeed or time out. Keep the assertion inside the callback and await the result; returning `false` alone does not trigger a retry.
 
-Replace `waitForExpect(callback, timeout, interval)` with `vi.waitFor(callback, { timeout, interval })`. The example preserves `wait-for-expect`'s defaults of a 4,500 ms timeout and 50 ms interval. Vitest defaults to a 1,000 ms timeout and 50 ms interval. Matching these settings does not guarantee identical scheduling or timeout behavior.
-
 ```ts
 import waitForExpect from 'wait-for-expect' // [!code --]
 import { expect, test } from 'vitest' // [!code --]
@@ -36,8 +34,6 @@ If you use `vi.useFakeTimers()`, `vi.waitFor()` automatically advances fake time
 [`t.waitFor()`](https://nodejs.org/api/test.html#contextwaitforcondition-options) is available on the test context since Node.js 22.14.0 and 23.7.0 and accepts synchronous or asynchronous assertion callbacks.
 
 It retries callbacks that throw or reject until they succeed or time out. Keep the assertion inside the callback and await the result; returning `false` alone does not trigger a retry.
-
-Replace `waitForExpect(callback, timeout, interval)` with `t.waitFor(callback, { timeout, interval })`. The example preserves `wait-for-expect`'s defaults of a 4,500 ms timeout and 50 ms interval. `t.waitFor()` defaults to a 1,000 ms timeout and 50 ms interval. Matching these settings does not guarantee identical scheduling or timeout behavior.
 
 ```ts
 import waitForExpect from 'wait-for-expect' // [!code --]
